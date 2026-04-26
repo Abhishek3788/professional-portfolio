@@ -2,45 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Abhishek Kachare - Professional Resume</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
+        /* Reset & Essential Locks */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { 
+            width: 100%; 
+            overflow-x: hidden; /* Stops the right-side shift */
+            -webkit-text-size-adjust: 100%;
+        }
+
         body { 
             font-family: 'Inter', sans-serif; 
             line-height: 1.4; 
             color: #000; 
             background: #f0f2f5; 
-            padding: 2.5% 5%;
         }
-        
-        /* Master Container */
+
+        /* Responsive Container */
         .page-container { 
-            width: 8.5in;
-            margin: 0 auto; 
             background: #fff; 
-            padding: 0.5in 0.6in;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            min-height: 11in;
-            border: 1px solid #ddd;
+            margin: 0 auto;
+            position: relative;
+            width: 100%; /* Default for mobile */
+            padding: 30px 20px;
         }
 
-        /* Header (Always Centered) */
-        header { text-align: center; margin-bottom: 25px; }
-        h1 { font-size: 32px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #000; margin-bottom: 5px; }
-        .title-sub { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #000; margin-bottom: 12px; }
+        /* Desktop Mode: High-End Paper View */
+        @media screen and (min-width: 850px) {
+            body { padding: 40px 0; }
+            .page-container { 
+                width: 8.5in; 
+                min-height: 11in; 
+                padding: 0.5in 0.6in;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border: 1px solid #ddd;
+            }
+        }
+
+        /* Header Style (Unified) */
+        header { text-align: center; margin-bottom: 25px; width: 100%; }
+        h1 { font-size: 32px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; line-height: 1.1; }
+        .title-sub { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
         
-        .contact-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px; font-weight: 600; color: #444; }
-        .contact-links a { color: #000; text-decoration: underline; }
+        .contact-links { display: flex; justify-content: center; gap: 10px 15px; flex-wrap: wrap; font-size: 13px; font-weight: 600; color: #444; width: 100%; }
+        .contact-links a { color: #000; text-decoration: underline; white-space: nowrap; }
 
-        hr.top-rule { border: 0; height: 3px; background: #000; margin: 20px 0; }
+        hr.top-rule { border: 0; height: 3px; background: #000; margin: 20px 0; width: 100%; }
 
-        /* Summary Box (Always Centered) */
+        /* Professional Summary Box */
         .summary-box { 
-            padding: 15px 30px; 
+            padding: 15px 20px; 
             border: 1px solid #000; 
             font-style: italic; 
             font-size: 14px; 
@@ -48,10 +64,11 @@
             margin-bottom: 30px;
             font-weight: 500;
             line-height: 1.6;
+            width: 100%;
         }
 
-        /* Section Styling */
-        .section { margin-bottom: 25px; }
+        /* Global Section Layout */
+        .section { margin-bottom: 25px; width: 100%; }
         .section-header { 
             font-size: 18px; 
             font-weight: 800; 
@@ -63,21 +80,20 @@
             text-align: left;
         }
 
-        /* Item Row (Desktop: Side-by-side | Mobile: Stacked & Centered) */
-        .item-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+        /* Dynamic Item Rows */
+        .item-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; width: 100%; }
         .item-title { font-size: 17px; font-weight: 700; color: #000; }
-        .item-date { font-size: 14px; font-weight: 700; color: #000; }
+        .item-date { font-size: 14px; font-weight: 700; color: #000; white-space: nowrap; }
         .item-org { font-size: 14px; font-weight: 600; color: #555; margin-bottom: 6px; }
 
         ul { list-style: disc; margin-left: 20px; }
         li { font-size: 14px; margin-bottom: 4px; color: #222; text-align: left; }
 
-        /* Skills Grid */
-        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 40px; margin-top: 10px; }
+        /* Responsive Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 40px; margin-top: 10px; width: 100%; }
         .skill-cat { font-size: 14px; font-weight: 800; text-transform: uppercase; margin-bottom: 4px; color: #000; }
         .skill-list { font-size: 14px; color: #333; font-weight: 500; }
 
-        /* View Buttons */
         .btn-view { 
             text-decoration: none; 
             color: #000; 
@@ -87,33 +103,26 @@
             font-weight: 800; 
             border-radius: 4px;
             text-transform: uppercase;
-            white-space: nowrap;
         }
 
-        /* MOBILE FIX: "Central Based" Logic */
-        @media (max-width: 800px) {
-            body { padding: 0; background: #fff; }
-            .page-container { 
-                width: 100% !important; 
-                padding: 30px 15px; 
-                box-shadow: none; 
-                border: none;
-                min-height: auto;
-            }
+        /* MOBILE OVERRIDE: Focus on Central Balance */
+        @media screen and (max-width: 849px) {
+            body { background: #fff; }
+            .page-container { padding: 30px 15px; }
             .section-header { text-align: center; }
             .item-row { flex-direction: column; align-items: center; text-align: center; gap: 4px; }
             .item-org { text-align: center; }
-            ul { margin-left: 10px; list-style: none; text-align: center; }
-            li { text-align: center; padding: 0 5px; }
+            ul { margin-left: 0; list-style: none; text-align: center; padding: 0 10px; }
+            li { text-align: center; }
             .skills-grid { grid-template-columns: 1fr; gap: 20px; text-align: center; }
-            .btn-view { display: inline-block; margin-top: 10px; }
-            h1 { font-size: 28px; }
+            .btn-view { display: inline-block; margin-top: 8px; }
+            h1 { font-size: 26px; }
             .title-sub { font-size: 16px; }
         }
 
-        /* PDF Settings (Keep documented for recruiters) */
-        .no-print { text-align: center; padding: 25px 0; }
-        .dl-btn { background: #000; color: #fff; padding: 12px 35px; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; font-size: 14px; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        /* UI Helpers */
+        .no-print { text-align: center; padding: 25px 0; background: #f0f2f5; }
+        .dl-btn { background: #000; color: #fff; padding: 12px 35px; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; font-size: 14px; letter-spacing: 1px; }
         
         @media print {
             body { padding: 0; background: #fff; }
@@ -135,10 +144,10 @@
             <div class="contact-links">
                 <span>MUMBAI, INDIA</span> | 
                 <span>+91 8799827537</span> | 
-                <span><a href="mailto:kachareabhishek3@gmail.com">KACHAREABHISHEK3@GMAIL.COM</a></span>
+                <span><a href="mailto:kachareabhishek3@gmail.com">kachareabhishek3@gmail.com</a></span>
             </div>
             <div class="contact-links" style="margin-top: 10px;">
-                <span>LINKEDIN: <a href="https://www.linkedin.com/in/abhishek-kachare-405a84222">abhishek-kachare-405a84222</a></span> | 
+                <span>LINKEDIN: <a href="https://www.linkedin.com/in/abhishek-kachare-405a84222">abhishek-kachare</a></span> | 
                 <span>GITHUB: <a href="https://github.com/Abhishek3788">Abhishek3788</a></span>
             </div>
         </header>
