@@ -107,18 +107,18 @@ const App = () => {
           <a 
             href="/Abhishek_Kachare_Professional_Resume.html" 
             target="_blank"
-            className="glass-card" 
-            style={{ padding: '0.8rem 2rem', border: '1px solid var(--accent-cyan)', borderRadius: '12px', textDecoration: 'none', color: 'var(--accent-cyan)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+            className="btn-primary" 
+            style={{ padding: '0.8rem 2rem', borderRadius: '12px', textDecoration: 'none', color: '#fff', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}
           >
-            <Download size={20} /> View Resume
+            <Download size={20} /> View & Print PDF
           </a>
           <a 
-            href="/Abhishek_Kachare_Resume.pdf" 
-            download
+            href={DATA.profile.linkedin} 
+            target="_blank"
             className="glass-card" 
             style={{ padding: '0.8rem 2rem', borderRadius: '12px', textDecoration: 'none', color: '#fff', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}
           >
-            <Download size={20} /> Download PDF
+            <User2 size={20} /> LinkedIn
           </a>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <a href={DATA.profile.linkedin} target="_blank" className="glass-card" style={{ padding: '0.8rem', borderRadius: '12px' }}><User2 size={20} /></a>

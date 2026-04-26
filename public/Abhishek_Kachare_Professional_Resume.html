@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhishek Kachare Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -48,12 +49,33 @@
         }
         @media print {
             body { padding: 0; }
-            .page { width: 100%; max-width: none; }
+            .page { width: 100%; max-width: none; border: none !important; }
+            .no-print { display: none !important; }
         }
+        .no-print {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .dl-btn {
+            background: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .dl-btn:hover { background: #333; transform: translateY(-2px); }
     </style>
 </head>
 <body>
-    <div class="page">
+    <div class="no-print" style="padding-top: 20px;">
+        <button class="dl-btn" onclick="generatePDF()">📥 DOWNLOAD AS PDF</button>
+        <p style="font-size: 11px; margin-top: 5px; color: #666;">(Generates a professional, high-quality PDF version)</p>
+    </div>
+    <div class="page" id="resume-content">
         <header>
             <h1>Abhishek Kachare</h1>
             <p style="font-weight: 700; font-size: 18px; letter-spacing: 1px;">AI & ML ENGINEER</p>
@@ -187,5 +209,19 @@
             </ul>
         </div>
     </div>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('resume-content');
+            const opt = {
+                margin: 0.5,
+                filename: 'Abhishek_Kachare_Resume.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
+        }
+    </script>
 </body>
 </html>
