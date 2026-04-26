@@ -104,7 +104,7 @@
 </head>
 <body>
     <div class="no-print">
-        <button class="dl-btn" onclick="generatePDF()">📥 DOWNLOAD FULL RESUME (PDF)</button>
+        <button class="dl-btn" onclick="generatePDF()">📥 DOWNLOAD FINAL EXECUTIVE PDF (V2)</button>
     </div>
 
     <div id="resume-wrap">
@@ -205,12 +205,12 @@
             // USE THE CLONE METHOD:
             const opt = {
                 margin: 0,
-                filename: 'Abhishek_Kachare_PRO_Resume.pdf',
+                filename: 'ABHISHEK_EXECUTIVE_RESUME_NEW.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { 
                     scale: 2, 
                     useCORS: true,
-                    width: 800, // LOCKED WIDTH
+                    width: 800,
                 },
                 jsPDF: { unit: 'px', format: [800, 1100], orientation: 'portrait' }
             };
