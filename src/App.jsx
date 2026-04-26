@@ -105,7 +105,7 @@ const App = () => {
             View Portfolio
           </button>
           <a 
-            href="/Abhishek_Kachare_Professional_Resume.html" 
+            href="/ABHISHEK_CHAMPION_RESUME.html" 
             target="_blank"
             className="btn-primary" 
             style={{ padding: '0.8rem 2rem', borderRadius: '12px', textDecoration: 'none', color: '#fff', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}
