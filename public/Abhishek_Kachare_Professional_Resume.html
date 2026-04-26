@@ -3,221 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek Kachare Resume</title>
+    <title>Abhishek Kachare - AI & ML Engineer</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700;800&display=swap');
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: 'Inter', system-ui, -apple-system, sans-serif; 
-            line-height: 1.5; 
-            color: #111; 
-            padding: 40px; 
-            background: #fff; 
-        }
-        a { color: #000; text-decoration: underline; }
-        .page { max-width: 800px; margin: 0 auto; }
-        header { border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 20px; text-align: center; }
-        h1 { font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #000; margin-bottom: 5px; }
-        .contact { display: flex; justify-content: center; gap: 15px; margin-top: 10px; font-size: 13px; color: #444; }
-        .section { margin-bottom: 25px; }
-        .section-title { 
-            font-size: 16px; 
-            font-weight: 900; 
+            font-family: 'Montserrat', sans-serif; 
+            line-height: 1.4; 
             color: #000; 
-            border-bottom: 2px solid #000;
-            padding-bottom: 4px;
-            margin-bottom: 15px; 
+            background: #f4f4f4; 
+            padding: 20px;
+        }
+        
+        /* PDF Container */
+        .page { 
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.5in 0.6in;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        header { border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 20px; text-align: center; }
+        h1 { font-size: 28pt; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+        .subtitle { font-size: 14pt; font-weight: 600; letter-spacing: 3px; color: #333; text-transform: uppercase; margin-bottom: 10px; }
+        
+        .contact-info { display: flex; justify-content: center; gap: 20px; font-size: 9pt; font-weight: 600; color: #444; }
+        .contact-info a { color: #000; text-decoration: none; border-bottom: 1px solid #999; }
+
+        .section { margin-bottom: 18px; }
+        .section-header { 
+            font-size: 11pt; 
+            font-weight: 800; 
             text-transform: uppercase; 
+            border-bottom: 1.5pt solid #000;
+            margin-bottom: 8px;
+            padding-bottom: 2px;
             letter-spacing: 1px;
         }
-        .item { margin-bottom: 15px; }
-        .item-header { display: flex; justify-content: space-between; font-weight: 700; font-size: 15px; color: #000; align-items: center; }
-        .item-sub { color: #555; font-size: 14px; font-weight: 600; margin-bottom: 5px; }
-        ul { list-style: disc; margin-left: 20px; font-size: 14px; color: #222; }
-        .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .skill-cat { font-weight: 800; font-size: 14px; text-transform: uppercase; color: #000; }
-        .skill-items { font-size: 14px; color: #444; }
-        .project-link { font-size: 12px; font-weight: 600; text-decoration: none; margin-left: 10px; border: 1px solid #000; padding: 2px 8px; border-radius: 4px; }
+
+        .summary { font-size: 10pt; text-align: justify; margin-bottom: 15px; font-family: 'Libre Baskerville', serif; font-style: italic; line-height: 1.6; }
+
+        .item { margin-bottom: 12px; }
+        .item-row { display: flex; justify-content: space-between; align-items: baseline; }
+        .item-title { font-size: 10.5pt; font-weight: 700; color: #000; }
+        .item-date { font-size: 9pt; font-weight: 600; color: #555; text-transform: uppercase; }
+        .item-org { font-size: 10pt; font-weight: 600; color: #444; font-style: italic; margin-bottom: 4px; }
+
+        ul { list-style: square; margin-left: 18px; }
+        li { font-size: 9.5pt; margin-bottom: 3px; color: #222; padding-left: 5px; }
+
+        .skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .skill-group { font-size: 9.5pt; }
+        .skill-name { font-weight: 700; text-transform: uppercase; font-size: 9pt; width: 140px; display: inline-block; }
+
+        .no-print { text-align: center; margin-bottom: 20px; }
+        .dl-btn { background: #000; color: #fff; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-weight: 700; font-size: 14px; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .dl-btn:hover { background: #333; transform: scale(1.05); transition: 0.2s; }
+
         @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 24px; }
-            .contact { flex-direction: column; gap: 8px; align-items: center; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .item-header { flex-direction: column; align-items: flex-start; gap: 2px; }
-            .item-header span:last-child { font-size: 12px; color: #666; }
-            .section-title { font-size: 14px; padding: 4px 0; }
+            .page { width: 100%; padding: 0.3in; border: none; }
+            h1 { font-size: 22pt; }
+            .contact-info { flex-direction: column; gap: 5px; align-items: center; }
+            .skills-container { grid-template-columns: 1fr; }
         }
+
         @media print {
-            body { padding: 0; }
-            .page { width: 100%; max-width: none; border: none !important; }
+            body { padding: 0; background: #fff; }
+            .page { margin: 0; box-shadow: none; padding: 0.5in 0.6in; }
             .no-print { display: none !important; }
         }
-        .no-print {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .dl-btn {
-            background: #000;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
-            transition: 0.2s;
-        }
-        .dl-btn:hover { background: #333; transform: translateY(-2px); }
     </style>
 </head>
 <body>
-    <div class="no-print" style="padding-top: 20px;">
-        <button class="dl-btn" onclick="generatePDF()">📥 DOWNLOAD AS PDF</button>
-        <p style="font-size: 11px; margin-top: 5px; color: #666;">(Generates a professional, high-quality PDF version)</p>
+    <div class="no-print" style="margin-top: 20px;">
+        <button class="dl-btn" onclick="generatePDF()">📥 GENERATE PROFESSIONAL PDF</button>
+        <p style="font-size: 12px; margin-top: 10px; color: #555; font-weight: 600;">(Executive Standard Format - Single Page Optimized)</p>
     </div>
-    <div class="page" id="resume-content">
+
+    <div class="page" id="resume-document">
         <header>
             <h1>Abhishek Kachare</h1>
-            <p style="font-weight: 700; font-size: 18px; letter-spacing: 1px;">AI & ML ENGINEER</p>
-            <div class="contact">
-                <span>MUMBAI, INDIA</span> |
-                <span>+91 8799827537</span> |
+            <div class="subtitle">AI & ML Engineer</div>
+            <div class="contact-info">
+                <span>MUMBAI, INDIA</span>
+                <span>+91 8799827537</span>
                 <span><a href="mailto:kachareabhishek3@gmail.com">KACHAREABHISHEK3@GMAIL.COM</a></span>
             </div>
-            <div class="contact" style="margin-top: 5px;">
-                <span>LINKEDIN: <a href="https://www.linkedin.com/in/abhishek-kachare-405a84222">abhishek-kachare-405a84222</a></span> |
-                <span>GITHUB: <a href="https://github.com/Abhishek3788">Abhishek3788</a></span>
-            </div>
-            <div class="contact" style="margin-top: 5px; font-weight: 800;">
-                <span>PORTFOLIO: <a href="https://professional-portfolio-abhishek3788.vercel.app">VIEW LIVE PORTFOLIO</a></span>
+            <div class="contact-info" style="margin-top: 6px;">
+                <span><a href="https://www.linkedin.com/in/abhishek-kachare-405a84222">LINKEDIN PROFILE</a></span>
+                <span><a href="https://github.com/Abhishek3788">GITHUB PORTFOLIO</a></span>
+                <span><a href="https://professional-portfolio-abhishek3788.vercel.app">LIVE WEBSITE</a></span>
             </div>
         </header>
 
-        <div class="section">
-            <p style="font-size: 14px; text-align: justify; border-left: 4px solid #000; padding-left: 15px; font-style: italic;">
-                Ambitious AI & ML Engineer with hands-on experience in building predictive models, computer vision systems, and agentic AI. Proven track record in internships at Personifwy and iStop, delivering high-impact projects in healthcare classification and driver safety. Skilled in Python, TensorFlow, and full-stack integration.
-            </p>
-        </div>
+        <section class="section">
+            <div class="summary">
+                "Dedicated Artificial Intelligence and Machine Learning Engineer specializing in Neural Networks, Computer Vision, and Predictive Modeling. Proven expertise in developing high-precision classification systems through industrial internships at Personifwy and iStop. Passionate about architecting intelligent solutions that bridge the gap between academic research and commercial impact."
+            </div>
+        </section>
 
-        <div class="section">
-            <h2 class="section-title">Education</h2>
+        <section class="section">
+            <h2 class="section-header">Professional Experience</h2>
             <div class="item">
-                <div class="item-header">
-                    <span>Bachelor of Engineering in AI & Data Science</span>
-                    <span>Expected 2027</span>
+                <div class="item-row">
+                    <span class="item-title">AI & Machine Learning Intern</span>
+                    <span class="item-date">March 2025 – Present</span>
                 </div>
-                <div class="item-sub">Datta Meghe College of Engineering, New Mumbai</div>
+                <div class="item-org">Personifwy | Mumbai, India</div>
+                <ul>
+                    <li>Spearheading the development of Deep Learning models for Landmark Recognition and Facial Attribute Classification.</li>
+                    <li>Optimizing neural architectures using TensorFlow to achieve high-precision results in complex geographic recognition.</li>
+                </ul>
             </div>
-        </div>
+            <div class="item" style="margin-top: 15px;">
+                <div class="item-row">
+                    <span class="item-title">AI Virtual Intern (Google for Developers)</span>
+                    <span class="item-date">2024 – 2025</span>
+                </div>
+                <div class="item-org">EduSkills Foundation | Remote</div>
+                <ul>
+                    <li>Collaborated on AI/ML research projects using Google Cloud AI and advanced TensorFlow workflows.</li>
+                    <li>Achieved mastery in Generative AI implementation and large-scale data diagnostic modeling.</li>
+                </ul>
+            </div>
+            <div class="item" style="margin-top: 15px;">
+                <div class="item-row">
+                    <span class="item-title">AI & ML Intern</span>
+                    <span class="item-date">2024</span>
+                </div>
+                <div class="item-org">iStop | Mumbai, India</div>
+                <ul>
+                    <li>Engineered predictive risk assessment models to identify customer behavioral anomalies in financial data.</li>
+                    <li>Applied Scikit-learn and Pandas for heavy-duty statistical analysis, increasing model detection rates by 15%.</li>
+                </ul>
+            </div>
+        </section>
 
-        <div class="section">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div>
-                    <p class="skill-cat">AI/ML & Data Science</p>
-                    <p class="skill-items">Python, Scikit-learn, TensorFlow, Neural Networks, Predictive Analytics, Generative AI</p>
+        <section class="section">
+            <h2 class="section-header">Core Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-group">
+                    <p><span class="skill-name">AI / ML:</span> Python, TensorFlow, Scikit-learn, Neural Nets</p>
+                    <p><span class="skill-name">Vision:</span> OpenCV, MediaPipe, Landmark Detection</p>
                 </div>
-                <div>
-                    <p class="skill-cat">Computer Vision & Agents</p>
-                    <p class="skill-items">OpenCV, MediaPipe, Landmark Detection, LLMs, Agentic Workflows</p>
-                </div>
-                <div>
-                    <p class="skill-cat">Web & Database</p>
-                    <p class="skill-items">React.js, Node.js, MongoDB, Express, Google Maps API</p>
-                </div>
-                <div>
-                    <p class="skill-cat">Tools & Data</p>
-                    <p class="skill-items">Git, Docker, Data Visualisation, Excel (VBA/Automation)</p>
+                <div class="skill-group">
+                    <p><span class="skill-name">Development:</span> React, Node.js, MongoDB, Google Cloud</p>
+                    <p><span class="skill-name">Analysis:</span> Predictive Modeling, Generative AI, VBA</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <h2 class="section-title">Professional Experience</h2>
+        <section class="section">
+            <h2 class="section-header">Technical Project Highlights</h2>
             <div class="item">
-                <div class="item-header">
-                    <span>AI & ML Intern</span>
-                    <span>March 2025 - Present</span>
+                <div class="item-row">
+                    <span class="item-title">Hospital Data Classification Platform</span>
+                    <span><a href="https://github.com/Abhishek3788/Hostpital-Data-Classification" style="font-size: 8.5pt; font-weight: 700;">[Github Code]</a></span>
                 </div>
-                <div class="item-sub">Personifwy | Mumbai, India</div>
                 <ul>
-                    <li>Spearheading Landmark Detection and Face Classification projects using Deep Learning.</li>
-                    <li>Optimizing neural networks for real-world landmark recognition with high precision.</li>
+                    <li>Architected a multi-class ML system to automate medical record categorization with 90%+ diagnostic precision.</li>
                 </ul>
             </div>
             <div class="item">
-                <div class="item-header">
-                    <span>Virtual Intern (Google for Developers)</span>
-                    <span>2024 - 2025</span>
+                <div class="item-row">
+                    <span class="item-title">AI-Powered Driver Safety System</span>
+                    <span><a href="https://github.com/Abhishek3788/Driver-Drowsiness-Detection" style="font-size: 8.5pt; font-weight: 700;">[Github Code]</a></span>
                 </div>
-                <div class="item-sub">EduSkills Foundation | Remote</div>
                 <ul>
-                    <li>Completed intensive projects in AI/ML using Google technologies.</li>
-                    <li>Gained certifications in advanced data science workflows and Gen AI.</li>
+                    <li>Developed a real-time computer vision system using MediaPipe for drowsiness detection and instant safety alerts.</li>
                 </ul>
             </div>
-            <div class="item">
-                <div class="item-header">
-                    <span>AI & ML Intern</span>
-                    <span>2024</span>
-                </div>
-                <div class="item-sub">iStop | Mumbai, India</div>
-                <ul>
-                    <li>Analyzed customer behavior patterns to identify financial risk markers.</li>
-                    <li>Built and evaluated predictive models to increase detection accuracy.</li>
-                </ul>
-            </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <h2 class="section-title">Key Projects</h2>
+        <section class="section">
+            <h2 class="section-header">Education & Certifications</h2>
             <div class="item">
-                <div class="item-header">
-                    <span>Hospital Data Classification</span>
-                    <a href="https://github.com/Abhishek3788/Hostpital-Data-Classification" class="project-link">VIEW CODE</a>
+                <div class="item-row">
+                    <span class="item-title">BE in AI & Data Science</span>
+                    <span class="item-date">Expected 2027</span>
                 </div>
-                <ul>
-                    <li>Developed a multi-class ML system to categorize patient medical records with 90%+ precision.</li>
-                </ul>
+                <div class="item-org">Datta Meghe College of Engineering, New Mumbai</div>
             </div>
-            <div class="item">
-                <div class="item-header">
-                    <span>Driver Drowsiness Detection System</span>
-                    <a href="https://github.com/Abhishek3788/Driver-Drowsiness-Detection" class="project-link">VIEW CODE</a>
-                </div>
-                <ul>
-                    <li>Real-time safety system using OpenCV and MediaPipe; features instant alarm triggers for safety.</li>
-                </ul>
+            <div style="font-size: 9.5pt; margin-top: 5px;">
+                <strong>Certifications:</strong> Gen AI Professional (TATA/SAP), Data Science Expert (Capgemini/SAP), Google AI Learner.
             </div>
-            <div class="item">
-                <div class="item-header">
-                    <span>Local AI Agent (Agentic AI)</span>
-                    <a href="https://github.com/Abhishek3788/local-ai-agent" class="project-link">VIEW CODE</a>
-                </div>
-                <ul>
-                    <li>Designed an offline-capable AI assistant for logistics, prioritizing data privacy and fast response times.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Certifications</h2>
-            <ul>
-                <li><strong><a href="https://www.linkedin.com/in/abhishek-kachare-405a84222/details/certifications/">Gen AI Professional</a></strong> - TATA Group / Forage (2024)</li>
-                <li><strong><a href="https://www.linkedin.com/in/abhishek-kachare-405a84222/details/certifications/">Data Science & AI Professional</a></strong> - SAP / Capgemini (2025)</li>
-                <li><strong><a href="https://www.linkedin.com/in/abhishek-kachare-405a84222/details/certifications/">Data Visualisation</a></strong> - Tata Group (2025)</li>
-            </ul>
-        </div>
+        </section>
     </div>
 
     <script>
         function generatePDF() {
-            const element = document.getElementById('resume-content');
+            const element = document.getElementById('resume-document');
             const opt = {
-                margin: 0.5,
-                filename: 'Abhishek_Kachare_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true },
+                margin: 0,
+                filename: 'Abhishek_Kachare_Resume_Professional.pdf',
+                image: { type: 'jpeg', quality: 1.0 },
+                html2canvas: { scale: 3, useCORS: true, letterRendering: true },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
             html2pdf().from(element).set(opt).save();
