@@ -105,12 +105,12 @@ const App = () => {
             View Portfolio
           </button>
           <a 
-            href="/ABHISHEK_OFFICIAL_RESUME.html" 
+            href="/ABHISHEK_OFFICIAL_RESUME.html?v=final_corporate_2026" 
             target="_blank"
             className="btn-primary" 
             style={{ padding: '0.8rem 2rem', borderRadius: '12px', textDecoration: 'none', color: '#fff', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}
           >
-            <Download size={20} /> 🚀 GET NEW RECRUITER VERSION
+            <Download size={20} /> 🔥 DOWNLOAD OFFICIAL RECRUITER VERSION
           </a>
           <a 
             href={DATA.profile.linkedin} 
